@@ -37,18 +37,23 @@ class Field:
     def SumNeighbours(self, x, y):
         return self.GetCell(x, y+1) + self.GetCell(x, y-1) + self.GetCell(x-1, y) + self.GetCell(x+1, y)
     
-    '''
-    def SpinFlip(x, y):
-        startEnergy = self.field[()]
-    '''  
+    def SpinFlip(self, x, y):
+        self.energy += (-2) * self.GetCell(x, y) * self.SumNeighbours(x, y)
+        self.SetCell(x, y, -self.GetCell(x, y))
     
     def DrawField(self):
         print(self.field)
 
 if __name__ == '__main__':
     field = Field(5, 5)
-    field.SetCell(0, 2, -1)
-    for (x, y) in field:
-        print(x, y)
-        
-    print(field.SumNeighbours(4, 2))
+    print(field.energy)
+    field.SpinFlip(4, 4)
+    print(field.energy)
+    field.SpinFlip(3, 4)
+    print(field.energy)
+    field.SpinFlip(2, 4)
+    print(field.energy)
+    field.SpinFlip(3, 4)
+    print(field.energy)
+    
+    print(field.GetCell(2, 4))
