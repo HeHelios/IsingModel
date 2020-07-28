@@ -3,8 +3,8 @@ from tkinter import *
 from random import random
 from decimal import Decimal, getcontext
 
-N=50                   #number of spins in the lattice
-T = 2                  #temperature
+N = 50                   #number of spins in the lattice
+T = 2.0                  #temperature
 iter = 1000000          #Number of iterations
 rend = 5000             #rendering frequency
 mfr = 5                #mean calculating frequency
