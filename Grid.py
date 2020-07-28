@@ -39,6 +39,7 @@ class Field:
     
     def SpinFlip(self, x, y):
         self.energy += (-2) * self.GetCell(x, y) * self.SumNeighbours(x, y)
+        self.magnetization -= 2
         self.SetCell(x, y, -self.GetCell(x, y))
     
     def DrawField(self):
