@@ -1,10 +1,5 @@
 class Field:
     def __init__(self, width, height):
-        if (not isinstance(width, int)):
-            raise ValueError("The width must be an int")
-        if (not isinstance(height, int)):
-            raise ValueError("The height must be an int")
-        
         #Field size initialization
         self.width = width
         self.height = height
@@ -21,6 +16,9 @@ class Field:
                 temp = (x, y)
                 self.field[temp] = 1
     
+    def __iter__(self):   
+        return self.field.__iter__()
+        
     def GetCell(self, x, y):
         if (x >= self.width):
             x = 0
@@ -32,7 +30,7 @@ class Field:
             y = self.height - 1
             
         return self.field[(x, y)]
-    
+     
     def SetCell(self, x, y, value):
         self.field[(x, y)] = value
     
@@ -50,4 +48,7 @@ class Field:
 if __name__ == '__main__':
     field = Field(5, 5)
     field.SetCell(0, 2, -1)
+    for (x, y) in field:
+        print(x, y)
+        
     print(field.SumNeighbours(4, 2))
