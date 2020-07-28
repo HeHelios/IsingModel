@@ -38,9 +38,13 @@ class Field:
         return self.GetCell(x, y+1) + self.GetCell(x, y-1) + self.GetCell(x-1, y) + self.GetCell(x+1, y)
     
     def SpinFlip(self, x, y):
-        self.energy += (-2) * self.GetCell(x, y) * self.SumNeighbours(x, y)
+        energyChange = (-2) * self.GetCell(x, y) * self.SumNeighbours(x, y)
+        
+        self.energy += energyChange
         self.magnetization -= 2*self.GetCell(x, y)
         self.SetCell(x, y, -self.GetCell(x, y))
+        
+        return energyChange
     
     def DrawField(self):
         print(self.field)
@@ -48,13 +52,13 @@ class Field:
 if __name__ == '__main__':
     field = Field(5, 5)
     print(field.energy)
-    field.SpinFlip(4, 4)
+    print(field.SpinFlip(4, 4))
     print(field.energy)
-    field.SpinFlip(3, 4)
+    print(field.SpinFlip(3, 4))
     print(field.energy)
-    field.SpinFlip(2, 4)
+    print(field.SpinFlip(2, 4))
     print(field.energy)
-    field.SpinFlip(3, 4)
+    print(field.SpinFlip(3, 4))
     print(field.energy)
     
     print(field.GetCell(2, 4))
