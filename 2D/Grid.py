@@ -22,8 +22,8 @@ class Field:
     def __str__(self):
         result = "" 
             
-        for x in range(0, self.width):
-            for y in range(0, self.height):
+        for x in range(self.width):
+            for y in range(self.height):
                 result += str(self.GetCell(x, y)) + " "
             result += '\n'
         
@@ -47,11 +47,12 @@ class Field:
     def SumNeighbours(self, x, y):
         return self.GetCell(x, y+1) + self.GetCell(x, y-1) + self.GetCell(x-1, y) + self.GetCell(x+1, y)
     
-    def SpinFlip(self, x, y):
-        energyChange = (-2) * self.GetCell(x, y) * self.SumNeighbours(x, y)
+    def FlipEnergy(self, x, y):
+        return 2 * self.GetCell(x, y) * self.SumNeighbours(x, y)
+        
+    def FlipSpin(self, x, y):
+        energyChange = 2 * self.GetCell(x, y) * self.SumNeighbours(x, y)
         
         self.energy += energyChange
         self.magnetization -= 2*self.GetCell(x, y)
         self.SetCell(x, y, -self.GetCell(x, y))
-        
-        return energyChange

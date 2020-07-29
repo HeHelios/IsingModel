@@ -46,9 +46,9 @@ def latt(g):    #redraw of the screen
     c.update()
 
 if __name__ == '__main__':
-    x = 20
-    y = 10
+    x = 50
+    y = 50
     g = Field(x, y)
-    g.SpinFlip(2,1)
+    g.FlipSpin(2,1)
     init(x, y)
     latt(g)
