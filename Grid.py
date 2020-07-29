@@ -18,6 +18,16 @@ class Field:
     
     def __iter__(self):   
         return self.field.__iter__()
+    
+    def __str__(self):
+        line = "" 
+            
+        for x in range(0, self.width):
+            for y in range(0, self.height):
+                line += str(self.GetCell(x, y)) + " "
+            line += '\n'
+        
+        return line
         
     def GetCell(self, x, y):
         if (x >= self.width):
@@ -45,12 +55,10 @@ class Field:
         self.SetCell(x, y, -self.GetCell(x, y))
         
         return energyChange
-    
-    def DrawField(self):
-        print(self.field)
 
 if __name__ == '__main__':
     field = Field(5, 5)
+    print(field)
     print(field.energy)
     print(field.SpinFlip(4, 4))
     print(field.energy)
@@ -60,5 +68,5 @@ if __name__ == '__main__':
     print(field.energy)
     print(field.SpinFlip(3, 4))
     print(field.energy)
-    
+    print(field)
     print(field.GetCell(2, 4))
