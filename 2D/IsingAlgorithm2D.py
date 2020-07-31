@@ -13,13 +13,13 @@ def MonteCarlo(grid, iterationNumber, temperature, magneticField = 0, show = Fal
         x = randint(0, width-1)
         y = randint(0, height-1)
         
-        deltaE = grid.FlipEnergy(x, y)
+        energyChange = grid.FlipEnergy(x, y, magneticField)
         
-        if deltaE <= 0:
-            grid.FlipSpin(x, y)
+        if energyChange <= 0:
+            grid.FlipSpin(x, y, magneticField)
         
-        elif  random() <= exp(- deltaE / temperature):
-            grid.FlipSpin(x, y)
+        elif random() <= exp(-energyChange / temperature):
+            grid.FlipSpin(x, y, magneticField)
 
         if show and (i % showFrequency == 0):
             latt(grid)

@@ -47,12 +47,10 @@ class Field:
     def SumNeighbours(self, x, y):
         return self.GetCell(x, y+1) + self.GetCell(x, y-1) + self.GetCell(x-1, y) + self.GetCell(x+1, y)
     
-    def FlipEnergy(self, x, y):
-        return 2 * self.GetCell(x, y) * self.SumNeighbours(x, y)
+    def FlipEnergy(self, x, y, magneticField):
+        return 2 * self.GetCell(x, y) * self.SumNeighbours(x, y) - 2 * magneticField * self.GetCell(x, y);
         
-    def FlipSpin(self, x, y):
-        energyChange = 2 * self.GetCell(x, y) * self.SumNeighbours(x, y)
-        
-        self.energy += energyChange
+    def FlipSpin(self, x, y, magneticField):
+        self.energy += self.FlipEnergy(x, y, magneticField)
         self.magnetization -= 2*self.GetCell(x, y)
         self.SetCell(x, y, -self.GetCell(x, y))
