@@ -38,7 +38,7 @@ class Field:
             x = self.width - 1
         if (y < 0):
             y = self.height - 1
-            
+        
         return self.field[(x, y)]
      
     def SetCell(self, x, y, value):
