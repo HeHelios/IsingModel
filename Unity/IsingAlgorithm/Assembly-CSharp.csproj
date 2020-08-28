@@ -49,8 +49,13 @@
      <Compile Include="Assets\Scripts\Algorithm&amp;Statistics\SettingsGUI.cs" />
      <Compile Include="Assets\Scripts\Field\Field.cs" />
      <Compile Include="Assets\Scripts\Field\FieldContainer.cs" />
-     <Compile Include="Assets\Scripts\Field\FieldContainerUI.cs" />
-     <Compile Include="Assets\Scripts\Field\FieldGUI.cs" />
+     <Compile Include="Assets\Scripts\Field\GUI\FieldContainerUI.cs" />
+     <Compile Include="Assets\Scripts\Field\GUI\FieldGUI.cs" />
+     <Compile Include="Assets\Scripts\Field\UI\FieldUI.cs" />
+     <Compile Include="Assets\Scripts\Graph\ConstantFunction.cs" />
+     <Compile Include="Assets\Scripts\Graph\UIGraphNormalizer.cs" />
+     <Compile Include="Assets\Scripts\Graph\UIGridRenderer.cs" />
+     <Compile Include="Assets\Scripts\Graph\UILineRenderer.cs" />
      <Compile Include="Assets\Scripts\Other\ScriptsContainer.cs" />
      <Compile Include="Assets\Scripts\Other\WindowObject.cs" />
      <Compile Include="Assets\Scripts\Panel\Panel.cs" />

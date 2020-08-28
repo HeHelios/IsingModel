@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,34 +12,45 @@ public class Panel : MonoBehaviour {
     [SerializeField] private GameObject startModellingButton;
     [SerializeField] private GameObject stopModellingButton;
 
+    [Header("Other scripts")]
+    [SerializeField] private ScriptsContainer scriptsContainer;
+
     public void UpdateButtonsColor() {
         startModellingButton.GetComponent<Graphic>().color =
-            (ScriptsContainer.fieldGUI.IsOpened() || ScriptsContainer.fieldContainerUI.IsOpened())? inactiveColor : startModellingColor;
+            (ScriptsContainer.fieldUI.IsOpened() || ScriptsContainer.fieldContainerUI.IsOpened())? inactiveColor : startModellingColor;
         stopModellingButton.GetComponent<Graphic>().color =
-            (ScriptsContainer.fieldGUI.IsOpened())? stopModellingColor : inactiveColor;
+            (ScriptsContainer.fieldUI.IsOpened())? stopModellingColor : inactiveColor;
     }
 
     private IEnumerator Start() {
         yield return new WaitForSeconds(0.01f);
+
+        scriptsContainer.ShowEnergyGraph(false);
+        scriptsContainer.ShowMagnetizationGraph(false);
         UpdateButtonsColor();
     }
 
     public void StartModelling() {
-        if(ScriptsContainer.fieldContainerUI.IsOpened() || ScriptsContainer.fieldGUI.IsOpened())
+        if(ScriptsContainer.fieldContainerUI.IsOpened() || ScriptsContainer.fieldUI.IsOpened())
             return;
 
         ScriptsContainer.fieldContainerUI.OpenWindow();
     }
 
     public void StopModelling() {
-        if (!ScriptsContainer.fieldGUI.IsOpened())
+        if (!ScriptsContainer.fieldUI.IsOpened())
             return;
 
         ScriptsContainer.isingAlgorithm.StopModelling();
         ScriptsContainer.fieldContainerUI.CloseWindow();
-        ScriptsContainer.fieldGUI.CloseWindow();
+        ScriptsContainer.fieldUI.CloseWindow();
         ScriptsContainer.settingsGUI.CloseWindow();
         ScriptsContainer.fieldContainerUI.CloseWindow();
+
+        scriptsContainer.ShowEnergyGraph(false);
+        scriptsContainer.ShowMagnetizationGraph(false);
+        scriptsContainer.HidePointsOnEnergyGraph();
+        scriptsContainer.HidePointsOnMagnetizationGraph();
     }
 
     public void ExitProgram() => Application.Quit();

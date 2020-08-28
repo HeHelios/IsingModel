@@ -1,13 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - ConstantFunction
     - FieldContainer
     - FieldContainerUI
     - FieldGUI
+    - FieldUI
     - IsingAlgorithm
     - Panel
     - ScriptsContainer
     - SettingsGUI
+    - UIGraphNormalizer
+    - UIGridRenderer
+    - UILineRenderer
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -37,6 +42,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.GridLayoutGroup
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.Outline
@@ -69,41 +75,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11782}
+      Script: {instanceID: 11426}
     - Class: 114
-      Script: {instanceID: 11802}
+      Script: {instanceID: 11478}
     - Class: 114
-      Script: {instanceID: 11926}
+      Script: {instanceID: 11784}
     - Class: 114
-      Script: {instanceID: 11946}
+      Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 12038}
+      Script: {instanceID: 11928}
     - Class: 114
-      Script: {instanceID: 12136}
+      Script: {instanceID: 11948}
     - Class: 114
-      Script: {instanceID: 12186}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 12414}
+      Script: {instanceID: 12088}
+    - Class: 114
+      Script: {instanceID: 12140}
+    - Class: 114
+      Script: {instanceID: 12190}
     - Class: 114
       Script: {instanceID: 12418}
     - Class: 114
-      Script: {instanceID: 12432}
+      Script: {instanceID: 12422}
     - Class: 114
-      Script: {instanceID: 12468}
+      Script: {instanceID: 12436}
     - Class: 114
-      Script: {instanceID: 12626}
+      Script: {instanceID: 12472}
     - Class: 114
-      Script: {instanceID: 12690}
+      Script: {instanceID: 12630}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12694}
     - Class: 114
-      Script: {instanceID: 13004}
+      Script: {instanceID: 12782}
     - Class: 114
-      Script: {instanceID: 13066}
+      Script: {instanceID: 12828}
     - Class: 114
-      Script: {instanceID: 13112}
+      Script: {instanceID: 12864}
     - Class: 114
-      Script: {instanceID: 13138}
+      Script: {instanceID: 13012}
+    - Class: 114
+      Script: {instanceID: 13074}
+    - Class: 114
+      Script: {instanceID: 13082}
+    - Class: 114
+      Script: {instanceID: 13122}
+    - Class: 114
+      Script: {instanceID: 13148}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -229,6 +247,12 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
+      Hash: 7cf2122ddc550daaf077735e873595af
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FieldUI
+  - hash:
+      serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -313,13 +337,13 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 25337baca47b5d974ce4588dfbfbf50d
+      Hash: 2084e7dd4430645e9213e43da92d204d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Panel
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: e144c10fe1d7a75df931278cc0d248c4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ScriptsContainer
@@ -353,6 +377,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: d011c84d8d15f7e36710a0afadd27e5a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIGraphNormalizer
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -433,7 +463,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: dcc0457bf1efa687a3417807c5e0e5a6
+      Hash: 1b79ee58b0bb3944583c7abbc4e49d14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FieldContainerUI
@@ -467,6 +497,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 67c74ac7f679d4162147dd6b1a031330
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UILineRenderer
+  - hash:
+      serializedVersion: 2
+      Hash: 1275f4a1db9bff2fbe03700f36905f01
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIGridRenderer
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -547,6 +589,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: c514a8c59d0811d7a282fc9d425d3602
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ConstantFunction
+  - hash:
+      serializedVersion: 2
       Hash: aa88ae22474df55295327e4ee99e5a24
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -583,11 +631,11 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 3941182336ff51672f1b1d2a0463a0f2
+      Hash: 215980c1c87d548c63846e6c1422792e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IsingAlgorithm
   platform: 5
   scenePathNames:
   - Assets/Scenes/IsingAlgorithm.unity
-  playerPath: C:/Users/ZamDimon/Desktop/IsingAlgorithmProgram/IsingAlgorithm.exe
+  playerPath: C:/Users/ZamDimon/Desktop/Ising Algorithm build 2/IsingAlgorithm.exe

@@ -7,6 +7,10 @@ public class Field {
     private float totalMagnetization;
     private int width;
     private int height;
+
+    private float averageEnergy;
+    private float averageMagnetization;
+    private int totalFlips;
     
     private Dictionary<Vector2Int, int> fieldCells;
 
@@ -18,6 +22,10 @@ public class Field {
         this.totalEnergy = -((width + 1) * height + width * (height + 1));
         this.totalMagnetization = width * height;
 
+        this.averageEnergy = this.totalEnergy;
+        this.averageMagnetization = this.totalMagnetization;
+        this.totalFlips = 1;
+
         for (int x = 0; x < width; ++x) {
             for (int y = 0; y < height; ++y) {
                 this.fieldCells.Add(new Vector2Int(x, y), 1);
@@ -28,7 +36,9 @@ public class Field {
     #region Accessors
     public Vector2Int GetSize() => new Vector2Int(width, height);
     public float GetTotalEnergy() => totalEnergy;
+    public float GetAverageEnergy() => averageEnergy;
     public float GetTotalMagnetization() => totalMagnetization;
+    public float GetAverageMagnetization() => averageMagnetization;
     public int GetCell(int x, int y) {
         if (x >= width) x = 0;
         if (y >= height) y = 0;
@@ -54,6 +64,11 @@ public class Field {
     public void FlipSpin(int x, int y, float magneticField) {
         totalEnergy += FlipEnergy(x, y, magneticField);
         totalMagnetization -= 2 * GetCell(x, y);
+
+        averageEnergy = ((float)totalFlips * averageEnergy + totalEnergy)/((float)totalFlips + 1f);
+        averageMagnetization = ((float)totalFlips * averageMagnetization + totalMagnetization)/((float)totalFlips + 1);
+
+        ++totalFlips;
         SetCell(x, y, -GetCell(x, y));
     }
     #endregion
